@@ -1,0 +1,14 @@
+{
+  "name": "SSR-shopping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:NigelEarle/SSR-shopping.git",
+  "author": "nwre87 <nwre87@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mobx-react": "^4.2.2",
+    "next": "^2.4.7",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
