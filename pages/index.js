@@ -6,7 +6,7 @@ const Index = () => (
       <a>Login</a>
     </Link>
     <Link as="/register" href="/register" prefetch>
-      <a>Login</a>
+      <a>Register</a>
     </Link>
     <h1>SHOPPING CART</h1>
   </div> 
