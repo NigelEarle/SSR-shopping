@@ -1,5 +1,7 @@
 .next
 
+server/config/session.json
+
 # Logs
 logs
 *.log
