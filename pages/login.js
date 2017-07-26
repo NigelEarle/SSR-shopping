@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
+import { AuthStore } from '../store';
+
+console.log(AuthStore);
 
 class Login extends Component {
-  
-  submitForm = (e) => {
-    e.preventDefault();
-    console.log('LOGIN FORM',)
-  }
 
   render() {
     return (

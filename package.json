@@ -6,7 +6,7 @@
   "author": "nwre87 <nwre87@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
@@ -24,5 +24,9 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "sequelize": "^4.4.2"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4"
   }
 }

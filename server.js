@@ -30,7 +30,7 @@ app.prepare()
     server.use(passport.initialize());
     server.use(passport.session());
 
-    server.use('/api', routes);
+    server.use('/api', routes); // api endpoints
 
     require('./server/passport')(); // passport strategy and serialization;
 
