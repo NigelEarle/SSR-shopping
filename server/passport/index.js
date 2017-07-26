@@ -18,26 +18,29 @@ module.exports = () => {
     });
   });
 
-  passport.use(new LocalStrategy((username, password, done) => {
+  passport.use('local', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  },(email, password, done) => {
     User.findOne({
       where: {
-        username,
+        email,
       },
     })
     .then((user) => {
       if (!user) {
         return done(null, false);
       }
-      checkPassword(password, user.password)
+      checkPassword(password, user.password) // pass .then block down chain
       .then((isValid) => {
         if (isValid) {
           return done(null, user);
         }
         return done(null, false);
-      });
+      })
     })
     .catch((err) => {
-      done(err);
+      return done(err);
     });
   }));
 };
