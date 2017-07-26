@@ -2,11 +2,10 @@ const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-
 const dev = process.env.NODE_ENV !== 'production';
 
 const db = require('./server/models');
+const passportAuth = require('./server/passport');
 const { SESSION_SECRET } = require('./config/session.json');
 
 const app = next({ dev });
@@ -24,6 +23,8 @@ app.prepare()
     }));
     server.use(passport.initialize());
     server.use(passport.session());
+
+    server.use(passportAuth);
 
     server.use('/api', routes);
 
