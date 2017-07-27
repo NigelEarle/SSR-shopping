@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { AuthStore } from '../store';
-
-console.log(AuthStore);
+import { Provider } from 'mobx-react'; 
+import { LoginForm } from '../components';
 
 class Login extends Component {
-
   render() {
     return (
-      <div>
-        <form onSubmit={this.submitForm}>
-          <input type="text" placeholder="Email"/>
-          <input type="password" placeholder="Password"/>
-          <input type="submit"/>
-        </form>
-      </div>
+      <Provider>
+        <LoginForm />
+      </Provider>
     );
   }
 }

@@ -3,6 +3,7 @@ const next = require('next');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const mobxReact = require('mobx-react');
 const dev = process.env.NODE_ENV !== 'production';
 
 const db = require('./server/models');
@@ -15,6 +16,8 @@ const { checkPassword } = require('./server/utils/hash.js');
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+mobxReact.useStaticRendering(true);
 
 app.prepare()
   .then(() => {

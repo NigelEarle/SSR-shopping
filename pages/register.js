@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Provider } from 'mobx-react';
+import { RegisterForm } from '../components';
 
-class Login extends Component {
+class Register extends Component {
   
   submitForm = (e) => {
     e.preventDefault();
@@ -9,15 +11,11 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.submitForm}>
-          <input type="text" name="email" placeholder="Email"/>
-          <input type="password" name="password" placeholder="Password"/>
-          <input type="submit"/>
-        </form>
-      </div>
+      <Provider>
+        <RegisterForm />
+      </Provider>
     );
   }
 }
 
-export default Login;
+export default Register;

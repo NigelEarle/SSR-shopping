@@ -1,15 +1,19 @@
+import { Component } from 'react';
 import Link from 'next/link';
+import { Provider } from 'mobx-react';
+import { Layout, Products } from '../components';
 
-const Index = () => (
-  <div>
-    <Link as="/login" href="/login" prefetch>
-      <a>Login</a>
-    </Link>
-    <Link as="/register" href="/register" prefetch>
-      <a>Register</a>
-    </Link>
-    <h1>SHOPPING CART</h1>
-  </div> 
-);
+
+class Index extends Component {
+  render() {
+    return (
+      <Layout>
+        <Provider>
+          <Products />
+        </Provider>
+      </Layout>
+    );
+  }
+}
 
 export default Index;
