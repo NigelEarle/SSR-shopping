@@ -5,6 +5,17 @@ import { Layout, Products } from '../components';
 
 
 class Index extends Component {
+  //  static getInitialProps ({ req }) {
+  //   const isServer = !!req
+  //   const store = initStore(isServer)
+  //   return { lastUpdate: store.lastUpdate, isServer }
+  // }
+
+  // constructor(props) {
+  //   super(props);
+  //   this.store = initStore(props.isServer)
+  // }
+
   render() {
     return (
       <Layout>
