@@ -7,16 +7,17 @@ class AuthStore {
   @observable email = '';
   @observable password = '';
   @observable isLoggedIn = false;
+  @observable error = '';
 
-  constructor(isServer, email, password) {
+  constructor(isServer, email, password, error) {
     this.email = email;
     this.password = password;
+    this.isLoggedIn = false;
+    this.error = error;
+
   }
 
   @action sendCreds = async () => {
-
-    if (!this.email && !this.password) throw new Error('must fill out');
-
     const payload = {
       email: this.email,
       password: this.password
@@ -34,10 +35,12 @@ class AuthStore {
   
     try {
       const { data } = await axios(config);
+      this.error = '';
       localStorage.setItem('email', data.email);
-
-    } catch(err) {
-      console.error('ERROR', err);
+      this.isLoggedIn = true;
+    } catch(error) {
+      this.error = 'Invalid login. Try again';
+      this.isLoggedIn = false;
     }
   }
 }

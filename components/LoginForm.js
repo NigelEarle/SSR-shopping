@@ -7,7 +7,11 @@ class LoginForm extends Component {
   submitForm = (e) => {
     e.preventDefault();
     const { auth } = this.props;
-    auth.sendCreds(auth.email, auth.password);
+    if (!auth.email || !auth.password) {
+      auth.error = 'Please fill out email and password';
+    } else {
+      auth.sendCreds(auth.email, auth.password);
+    }
   }
 
   render() {
@@ -15,6 +19,9 @@ class LoginForm extends Component {
     return (
       <div>
         <h1>Login</h1>
+        {auth.error &&
+          <p>{auth.error}</p>
+        }
         <form onSubmit={this.submitForm}>
           <input type="text"
             name="email"
