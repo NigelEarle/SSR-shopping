@@ -6,26 +6,24 @@ let store = null;
 class AuthStore {
   @observable email = '';
   @observable password = '';
-  @observable isLoggedIn = false;
   @observable error = '';
 
   constructor(isServer, email, password, error) {
     this.email = email;
     this.password = password;
-    this.isLoggedIn = false;
     this.error = error;
 
   }
 
-  @action sendCreds = async () => {
+  @action sendCreds = async (method, endpoint) => {
     const payload = {
       email: this.email,
       password: this.password
     };
 
     const config = {
-      method: 'post',
-      url: '/api/auth/login',
+      method: method,
+      url: `/api/auth/${endpoint}`,
       data: JSON.stringify(payload),
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -35,12 +33,10 @@ class AuthStore {
   
     try {
       const { data } = await axios(config);
-      this.error = '';
       localStorage.setItem('email', data.email);
-      this.isLoggedIn = true;
+      this.error = '';
     } catch(error) {
       this.error = 'Invalid login. Try again';
-      this.isLoggedIn = false;
     }
   }
 }

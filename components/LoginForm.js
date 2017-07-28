@@ -10,7 +10,7 @@ class LoginForm extends Component {
     if (!auth.email || !auth.password) {
       auth.error = 'Please fill out email and password';
     } else {
-      auth.sendCreds(auth.email, auth.password);
+      auth.sendCreds('post', 'login');
     }
   }
 
@@ -23,7 +23,8 @@ class LoginForm extends Component {
           <p>{auth.error}</p>
         }
         <form onSubmit={this.submitForm}>
-          <input type="text"
+          <input
+            type="text"
             name="email"
             onChange={(e) => (
               auth.email = e.target.value
