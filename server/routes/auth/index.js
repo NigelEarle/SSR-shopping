@@ -35,14 +35,12 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   passport.authenticate('local', (err, user) => {
-    console.log('USER', user)
     if (err) return res.status(500).json({ err });
 
     if (!user) return res.status(401).json({ message: 'invalid' });
 
     req.logIn(user, (error) => {
-      if (err) return res.json({ error });
-
+      if (error) return res.json({ error });
       return res.status(200).json({ email: user.email });
     });
   })(req, res);

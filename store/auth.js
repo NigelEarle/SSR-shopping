@@ -14,12 +14,13 @@ class AuthStore {
   }
 
   @action sendCreds = async () => {
+
+    if (!this.email && !this.password) throw new Error('must fill out');
+
     const payload = {
       email: this.email,
       password: this.password
     };
-
-    console.log('PAYLOAD', payload);
 
     const config = {
       method: 'post',
@@ -30,12 +31,13 @@ class AuthStore {
         'Accept': 'application/json',
       }
     }
-
+  
     try {
-      const result = await axios.post('/api/auth/login', JSON.stringify(payload))
-      console.log('RESULT FROM LOGIN', result);
+      const { data } = await axios(config);
+      localStorage.setItem('email', data.email);
+
     } catch(err) {
-      console.error(err);
+      console.error('ERROR', err);
     }
   }
 }
