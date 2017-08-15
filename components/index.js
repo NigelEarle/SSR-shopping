@@ -1,13 +1,5 @@
-import Header from './Header';
-import Layout from './Layout';
-import Products from './Products';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
-
-export {
-  Header,
-  Layout,
-  Products,
-  LoginForm,
-  RegisterForm,
-}
+export { default as Header } from './Header';
+export { default as Layout } from './Layout';
+export { default as Products } from './Products';
+export { default as LoginForm } from './LoginForm';
+export { default as RegisterForm } from './RegisterForm';
