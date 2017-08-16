@@ -1,8 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-  const Task = sequelize.define('Product', {
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    inventory: DataTypes.INTEGER,
+  const Products = sequelize.define('Product', {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    inventory: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(12, 4),
+      allowNull: false,
+    }
   }, {
     classMethods: {
       associate(models) {
@@ -10,5 +23,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
- return Task;
+  return Products;
 };
