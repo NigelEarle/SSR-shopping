@@ -6,5 +6,7 @@ module.exports = {
     return queryInterface.bulkInsert('Products', products, {});
   },
 
-  down: function (queryInterface, Sequelize) {}
+  down: function (queryInterface, Sequelize) {
+    queryInterface.bulkDelete('Products', null, {});
+  }
 };
