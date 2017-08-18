@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const { User } = require('../../models');
+// const { User } = require('../../models'); TODO: Change to Bookshelf.js
 const { hashPassword } = require('../../utils/hash.js');
 
 const router = express.Router();
@@ -18,7 +18,7 @@ router.post('/register', (req, res) => {
       password: hash,
     };
 
-    return User.create(user);
+    // return User.create(user);  TODO: Change to Bookshelf.js
   })
   .then(({ dataValues }) => {
     req.logIn(dataValues, (error) => {

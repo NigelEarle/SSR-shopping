@@ -43,7 +43,6 @@ app.prepare()
 
     server.listen(3000, (err) => {
       if (err) throw err;
-      db.sequelize.sync();
       console.log('Listening on http://localhost:3000');
     })
   })

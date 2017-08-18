@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const { User } = require('../models');
+// const { User } = require('../models');  TODO: Change to Bookshelf.js
 const { checkPassword } = require('../utils/hash.js');
 
 module.exports = () => {
@@ -9,7 +9,7 @@ module.exports = () => {
   });
 
   passport.deserializeUser((id, done) => {
-    User.findById(id)
+    // User.findById(id) TODO: Change to Bookshelf.js
     .then((user) => {
       done(null, user);
     })
@@ -22,7 +22,7 @@ module.exports = () => {
     usernameField: 'email',
     passwordField: 'password'
   },(email, password, done) => {
-    User.findOne({
+    // User.findOne({ TODO: Change to Bookshelf.js
       where: {
         email,
       },
