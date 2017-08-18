@@ -33,7 +33,9 @@ app.prepare()
     server.use(passport.initialize());
     server.use(passport.session());
 
-    server.use('/api', routes); // api endpoints
+    require('./server/bookshelf'); // instantiate bookshelf
+
+    server.use('/api', routes);
 
     require('./server/passport')(); // passport strategy and serialization;
 
