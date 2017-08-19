@@ -6,7 +6,8 @@
   "author": "nwre87 <nwre87@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "migrate" : "cd server && knex migrate:latest --knexfile db.js && cd .."
   },
   "dependencies": {
     "axios": "^0.16.2",
