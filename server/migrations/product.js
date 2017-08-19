@@ -7,6 +7,7 @@ exports.up = function(knex) {
       table.text('description');
       table.integer('inventory');
       table.decimal('price', 8, 2);
+      table.integer('category_id').references('categories.id');
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());
     });
