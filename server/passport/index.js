@@ -21,7 +21,6 @@ module.exports = () => {
     User.where('email', email)
     .fetch()
     .then(({ attributes }) => {
-
       if (!attributes) {
         return done(null, false);
       }
