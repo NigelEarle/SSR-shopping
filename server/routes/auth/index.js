@@ -15,16 +15,15 @@ router.post('/register', (req, res) => {
   .then((hash) => {
     const user = {
       email,
-      password: hash,
+      password: hash
     };
-
-    // return User.create(user); // TODO: use bookshelf create method
+    return new User(user).save()
   })
-  .then(({ dataValues }) => {
+  .then(({ attributes }) => {
     req.logIn(dataValues, (error) => {
       if (error) return res.status(500).json({ error });
       res.status(200).json({
-        email: dataValues.email,
+        email: attributes.email,
       });
     });
   })

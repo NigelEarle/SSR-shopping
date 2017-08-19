@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-// const { User } = require('../models');  TODO: Change to Bookshelf.js
+const { User } = require('../models');
 const { checkPassword } = require('../utils/hash.js');
 
 module.exports = () => {
@@ -9,32 +9,26 @@ module.exports = () => {
   });
 
   passport.deserializeUser((id, done) => {
-    // User.findById(id) TODO: Change to Bookshelf.js
-    .then((user) => {
-      done(null, user);
-    })
-    .catch((err) => {
-      done(err, false);
-    });
+    User.where('id', id).fetch()
+    .then(user => done(null, user))
+    .catch(err => done(err, false));
   });
 
   passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },(email, password, done) => {
-    // User.findOne({ TODO: Change to Bookshelf.js
-      where: {
-        email,
-      },
-    })
-    .then((user) => {
-      if (!user) {
+    User.where('email', email)
+    .fetch()
+    .then(({ attributes }) => {
+
+      if (!attributes) {
         return done(null, false);
       }
-      checkPassword(password, user.password) // pass .then block down chain
+      checkPassword(password, attributes.password) // pass .then block down chain
       .then((isValid) => {
         if (isValid) {
-          return done(null, user);
+          return done(null, attributes);
         }
         return done(null, false);
       })

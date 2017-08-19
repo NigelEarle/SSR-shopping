@@ -2,20 +2,20 @@ const bookshelf = require('../bookshelf');
 
 const User = bookshelf.Model.extend(
   {
-    tableName: 'Users',
+    tableName: 'users',
   }
 );
 
 const Product = bookshelf.Model.extend(
   {
-    tableName: 'Products',
+    tableName: 'products',
 
   }
 );
 
 const Category = bookshelf.Model.extend(
   {
-    tableName: 'Categories',
+    tableName: 'categories',
     products() {
       return this.hasMany(Product);
     }
