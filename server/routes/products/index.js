@@ -17,6 +17,22 @@ router.get('/', (req, res) => {
     .status(500)
     .json({ err });
   });
-})
+});
+
+router.post('/new', /* admin middleware */, (req, res) => {
+
+});
+
+router.get('/:productId', /* admin middleware */, (req, res) => {
+
+});
+
+router.put('/:productId/update', /* admin middleware */, (req, res) => {
+
+});
+
+router.delete('/:productId/delete', /* admin middleware */, (req, res) => {
+
+});
 
 module.exports = router;
