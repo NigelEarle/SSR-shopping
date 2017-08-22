@@ -3,6 +3,8 @@ const { Product } = require('../../models');
 
 const router = express.Router();
 
+router.use('/admin', require('./admin')); // admin routes on products
+
 router.get('/', (req, res) => {
   Product.fetchAll()
   .then(allProducts => {
@@ -19,19 +21,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/new', /* admin middleware */, (req, res) => {
-
-});
-
-router.get('/:productId', /* admin middleware */, (req, res) => {
-
-});
-
-router.put('/:productId/update', /* admin middleware */, (req, res) => {
-
-});
-
-router.delete('/:productId/delete', /* admin middleware */, (req, res) => {
+router.get('/:productId', (req, res) => {
 
 });
 
