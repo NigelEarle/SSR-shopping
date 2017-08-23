@@ -6,6 +6,7 @@ const { hashPassword } = require('../../utils/hash.js');
 const router = express.Router();
 
 router.post('/register', (req, res) => {
+  // check if user by req.body.email already exists
   const {
     email,
     password,
@@ -15,12 +16,12 @@ router.post('/register', (req, res) => {
   .then((hash) => {
     const user = {
       email,
-      password: hash
+      password: hash,
     };
     return new User(user).save()
   })
   .then(({ attributes }) => {
-    req.logIn(dataValues, (error) => {
+    req.logIn(attributes, (error) => {
       if (error) return res.status(500).json({ error });
       res.status(200).json({
         email: attributes.email,
