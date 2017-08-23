@@ -9,8 +9,9 @@ module.exports = () => {
   });
 
   passport.deserializeUser((id, done) => {
-    User.where('id', id).fetch()
-    .then(user => done(null, user))
+    User.where('id', id)
+    .fetch()
+    .then(user => done(null, user.serialize()))
     .catch(err => done(err, false));
   });
 

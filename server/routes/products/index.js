@@ -6,6 +6,7 @@ const router = express.Router();
 router.use('/admin', require('./admin')); // admin routes on products
 
 router.get('/', (req, res) => {
+  console.log(req.user.isAdmin);
   Product.fetchAll()
   .then(allProducts => {
     res
