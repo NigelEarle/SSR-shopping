@@ -22,7 +22,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:productId', (req, res) => {
-
+  const { productId } = req.params;
+  Product.where('id', productId)
+  .fetch()
+  .then(product => {
+    res
+    .status(200)
+    .json({ product });
+  })
+  .catch( err => {
+    res
+    .status(500)
+    .json({ err })
+  })
 });
 
 module.exports = router;
