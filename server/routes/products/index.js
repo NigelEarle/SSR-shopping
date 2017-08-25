@@ -21,9 +21,9 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:productId', (req, res) => {
-  const { productId } = req.params;
-  Product.where('id', productId)
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  Product.where('id', id)
   .fetch()
   .then(product => {
     res

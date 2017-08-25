@@ -19,7 +19,7 @@ router.post('/new', isAdmin, (req, res) => {
     price,
     category_id
   };
-  
+
   Product.forge(payload)
   .save()
   .then(product => {
@@ -34,8 +34,38 @@ router.post('/new', isAdmin, (req, res) => {
   })
 });
 
-router.put('/:productId/update', isAdmin, (req, res) => {
-  res.send('UPDATE');
+router.put('/:id/update', isAdmin, (req, res) => {
+  const { id } = req.params;
+
+  const {
+    title,
+    description,
+    inventory,
+    price,
+    category_id,
+  } = req.body;
+
+  const payload = {
+    title,
+    description,
+    inventory,
+    price,
+    category_id,
+    updated_at: new Date,
+  };
+
+  Product.forge({ id })
+  .save(payload)
+  .then(product => {
+    res
+    .status(200)
+    .json({ product })
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json({ err })
+  })
 });
 
 router.delete('/:productId/delete', isAdmin, (req, res) => {
