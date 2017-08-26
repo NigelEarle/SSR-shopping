@@ -7,8 +7,9 @@ class ProductStore {
   @observable products = [];
   @observable error = '';
 
-  constructor(products) {
+  constructor(products, error) {
     this.products = products;
+    this.error = error
   }
 }
 
