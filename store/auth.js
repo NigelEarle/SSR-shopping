@@ -12,7 +12,6 @@ class AuthStore {
     this.email = email;
     this.password = password;
     this.error = error;
-
   }
 
   @action sendCreds = async (method, endpoint) => {
@@ -29,7 +28,7 @@ class AuthStore {
         'Content-Type': 'application/json;charset=UTF-8',
         'Accept': 'application/json',
       }
-    }
+    };
   
     try {
       const { data } = await axios(config);
