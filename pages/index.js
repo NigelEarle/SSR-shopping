@@ -12,20 +12,24 @@ class Index extends Component {
     await store.fetchProducts();
     return { 
       products: store.products,
-      error: store.error
+      error: store.error,
+      isServer
     };
   }
 
   constructor(props) {
     super(props);
-    this.store = initProductStore(props.isServer)
+    this.store = initProductStore(
+      props.isServer,
+      props.products, 
+      props.error
+    );
   }
 
   render() {
-    const { products, error } = this.props
     return (
       <Layout>
-        <Provider store={this.store} products={products} error={error}>
+        <Provider productStore={this.store}>
           <Products />
         </Provider>
       </Layout>

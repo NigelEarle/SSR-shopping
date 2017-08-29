@@ -12,18 +12,24 @@ class Register extends Component {
     return {
       email: store.email,
       password: store.password,
+      error: store.error,
       isServer,
     }
   }
 
   constructor(props) {
     super(props);
-    this.store = initAuthStore(props.isServer)
+    this.store = initAuthStore(
+      props.isServer,
+      props.email,
+      props.password,
+      props.error
+    );
   }
 
   render() {
     return (
-      <Provider auth={this.store}>
+      <Provider authStore={this.store}>
         <RegisterForm />
       </Provider>
     );

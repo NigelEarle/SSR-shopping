@@ -4,9 +4,9 @@ import axios from 'axios';
 let store = null;
 
 class AuthStore {
-  @observable email = '';
-  @observable password = '';
-  @observable error = '';
+  @observable email;
+  @observable password;
+  @observable error;
 
   constructor(isServer, email, password, error) {
     this.email = email;
@@ -40,12 +40,12 @@ class AuthStore {
   }
 }
 
-export function initAuthStore (isServer, email = '', password = '') {
+export function initAuthStore (isServer, email = '', password = '', error = '') {
   if (isServer && typeof window === 'undefined') {
-    return new AuthStore(isServer, email, password);
+    return new AuthStore(isServer, email, password, error);
   } else {
     if (store === null) {
-      store = new AuthStore(isServer, email, password)
+      store = new AuthStore(isServer, email, password, error)
     }
     return store
   }

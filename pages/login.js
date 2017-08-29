@@ -8,22 +8,29 @@ class Login extends Component {
 
   static getInitialProps ({ req }) {
     const isServer = !!req
-    const store = initAuthStore(isServer)
+    const store = initAuthStore(isServer);
+
     return {
       email: store.email,
       password: store.password,
+      error: store.error,
       isServer,
     }
   }
 
   constructor(props) {
     super(props);
-    this.store = initAuthStore(props.isServer)
+    this.store = initAuthStore(
+      props.isServer,
+      props.email,
+      props.password,
+      props.error,
+    );
   }
 
   render() {
     return (
-      <Provider auth={this.store}>
+      <Provider authStore={this.store}>
         <LoginForm />
       </Provider>
     );

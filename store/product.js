@@ -4,10 +4,10 @@ import axios from 'axios';
 let store = null;
 
 class ProductStore {
-  @observable products = [];
-  @observable error = '';
+  @observable products;
+  @observable error;
 
-  constructor(products, error) {
+  constructor(isServer, products, error) {
     this.products = products;
     this.error = error
   }

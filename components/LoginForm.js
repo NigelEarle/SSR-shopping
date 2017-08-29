@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-@inject('auth') @observer
+@inject('authStore') @observer
 class LoginForm extends Component {
 
   submitForm = (e) => {
     e.preventDefault();
-    const { auth } = this.props;
-    if (!auth.email || !auth.password) {
-      auth.error = 'Please fill out email and password';
+    const { authStore } = this.props;
+    if (!authStore.email || !authStore.password) {
+      authStore.error = 'Please fill out email and password';
     } else {
-      auth.sendCreds('post', 'login');
+      authStore.sendCreds('post', 'login');
     }
   }
 
   render() {
-    const { auth } = this.props;
+    const { authStore } = this.props;
     return (
       <div>
         <h1>Login</h1>
-        {auth.error &&
-          <p>{auth.error}</p>
+        {authStore.error &&
+          <p>{authStore.error}</p>
         }
         <form onSubmit={this.submitForm}>
           <input
             type="text"
             name="email"
             onChange={(e) => (
-              auth.email = e.target.value
+              authStore.email = e.target.value
             )}
             placeholder="Email"
           />
@@ -35,7 +35,7 @@ class LoginForm extends Component {
             type="password"
             name="password"
             onChange={(e) => (
-              auth.password = e.target.value
+              authStore.password = e.target.value
             )}
             placeholder="Password"/>
           <input type="submit"/>
