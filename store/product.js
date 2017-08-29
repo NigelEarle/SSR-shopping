@@ -11,6 +11,15 @@ class ProductStore {
     this.products = products;
     this.error = error
   }
+
+  @action fetchProducts = async () => {
+    try {
+      const { data: { products } } = await axios.get('http://localhost:3000/api/products')
+      this.products = products;
+    } catch(error) {
+      this.error = error;
+    }
+  };
 }
 
 export function initProductStore (isServer, products = [], error = '') {
