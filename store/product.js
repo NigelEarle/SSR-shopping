@@ -20,6 +20,10 @@ class ProductStore {
       this.error = error;
     }
   };
+
+  fetchSingleProduct = (productId) => {
+    return this.products.filter(current => current.id === productId);
+  };
 }
 
 export function initProductStore (isServer, products = [], error = '') {

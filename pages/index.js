@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Provider } from 'mobx-react';
 import { Layout, Products } from '../components';
 import { initProductStore } from '../store/product';
-import { Blah } from '../styles';
 
 
 class Index extends Component {
@@ -30,9 +29,6 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <Blah>
-          
-        </Blah>
         <Provider productStore={this.store}>
           <Products />
         </Provider>

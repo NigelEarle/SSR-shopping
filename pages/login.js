@@ -9,7 +9,6 @@ class Login extends Component {
   static getInitialProps ({ req }) {
     const isServer = !!req
     const store = initAuthStore(isServer);
-
     return {
       email: store.email,
       password: store.password,
