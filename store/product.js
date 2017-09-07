@@ -9,20 +9,16 @@ class ProductStore {
 
   constructor(isServer, products, error) {
     this.products = products;
-    this.error = error
+    this.error = error;
   }
 
   @action fetchProducts = async () => {
     try {
-      const { data: { products } } = await axios.get('http://localhost:3000/api/products')
+      const { data: { products } } = await axios.get('http://localhost:3000/api/products');
       this.products = products;
     } catch(error) {
       this.error = error;
     }
-  };
-
-  fetchSingleProduct = (productId) => {
-    return this.products.filter(current => current.id === productId);
   };
 }
 

@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
 
-@inject('productStore')@observer
+@inject('productStore') @observer
 class Products extends Component {
 
   render() {
