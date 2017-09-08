@@ -10,7 +10,7 @@ class ProductStore {
   constructor(isServer, products, error) {
     this.products = products;
     this.error = error;
-  }
+  };
 
   @action fetchProducts = async () => {
     try {
@@ -19,6 +19,10 @@ class ProductStore {
     } catch(error) {
       this.error = error;
     }
+  };
+
+  getSingleProduct = (id) => {
+    return Promise.resolve(this.products.filter(product => id === product.id));
   };
 }
 

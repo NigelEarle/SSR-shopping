@@ -12,13 +12,10 @@ class Products extends Component {
         error,
       },
     } = this.props;
-
+    console.log(this.props);
     return (
       <div>
-        {products.map((curr, idx) => (
-          <h3>{curr.title}</h3> 
-        ))}
-        <h1>Render all products</h1>
+        {products.map((curr, idx) => <h3>{curr.title}</h3>)}
       </div>
     );
   }

@@ -28,6 +28,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
+        <h1>Welcome To SSR Shopping!</h1>
         <Provider productStore={this.store}>
           <Products />
         </Provider>

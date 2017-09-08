@@ -5,8 +5,6 @@ class SingleProduct extends Component {
 
   }
 
-
-
   render() {
     return (
       <div>Single Product</div>
