@@ -1,9 +1,14 @@
 import React,{ Component } from 'react';
 import { inject, observer } from 'mobx-react';
-
+import { SingleProduct } from '../components';
 
 @inject('productStore') @observer
 class Products extends Component {
+
+
+  getProductId = (id) => {
+    console.log(id);
+  }
 
   render() {
     const {
@@ -12,10 +17,15 @@ class Products extends Component {
         error,
       },
     } = this.props;
-    console.log(this.props);
     return (
       <div>
-        {products.map((curr, idx) => <h3>{curr.title}</h3>)}
+        {products.map((product, idx) => (
+          <SingleProduct
+            {...product}
+            key={product.id}
+            getProductId={this.getProductId}
+          />
+        ))}
       </div>
     );
   }

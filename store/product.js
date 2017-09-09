@@ -22,7 +22,7 @@ class ProductStore {
   };
 
   getSingleProduct = (id) => {
-    return Promise.resolve(this.products.filter(product => id === product.id));
+    return Promise.resolve(this.products.filter(product => id === product.id)[0]);
   };
 }
 
