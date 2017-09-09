@@ -7,7 +7,9 @@ class Products extends Component {
 
 
   getProductId = (id) => {
-    console.log(id);
+    const { productStore: { getSingleProduct } } = this.props;
+    getSingleProduct(id)
+    .then(product => console.log(product));
   }
 
   render() {
