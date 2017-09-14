@@ -9,7 +9,7 @@ class Products extends Component {
   getProductId = (id) => {
     const { productStore: { getSingleProduct } } = this.props;
     getSingleProduct(id)
-    .then(product => console.log(product));
+    .then(console.log);
   }
 
   render() {
@@ -19,6 +19,7 @@ class Products extends Component {
         error,
       },
     } = this.props;
+
     return (
       <div>
         {products.map((product, idx) => (

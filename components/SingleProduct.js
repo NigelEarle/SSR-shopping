@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const SingleProduct = ({
   getProductId,
@@ -8,9 +9,14 @@ const SingleProduct = ({
   inventory,
   price
 }) => (
-  <div onClick={() => getProductId(id)}>
-    <h3>{title}</h3>
-  </div>
+
+<div>
+  <Link as={`/product/${id}`} href={`/product/${id}`}>
+    <div>
+      <h3>{title}</h3>
+    </div>
+  </Link>
+</div>
 );
 
 export default SingleProduct
