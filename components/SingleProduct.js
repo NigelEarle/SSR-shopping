@@ -11,7 +11,7 @@ const SingleProduct = ({
 }) => (
 
 <div>
-  <Link as={`/product/${id}`} href={`/product/${id}`}>
+  <Link prefetch href={`/product`}>
     <div>
       <h3>{title}</h3>
     </div>

@@ -1,8 +1,8 @@
 import React,  { Component } from 'react';
 
-class SingleProduct extends Component {
+class Product extends Component {
   static getInitialProps() {
-
+    return {}
   }
 
   render() {
@@ -10,4 +10,6 @@ class SingleProduct extends Component {
       <div>Single Product</div>
     );
   }
-}
+};
+
+export default Product;
