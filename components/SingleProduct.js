@@ -9,14 +9,15 @@ const SingleProduct = ({
   inventory,
   price
 }) => (
-
-<div>
-  <Link prefetch href={`/product`}>
-    <div>
-      <h3>{title}</h3>
-    </div>
-  </Link>
-</div>
+  <div>
+    <Link prefetch href={`/product`}>
+      <a>
+        <div>
+          <h3>{title}</h3>
+        </div>
+      </a>
+    </Link>
+  </div>
 );
 
 export default SingleProduct
