@@ -6,11 +6,11 @@ import { ListItemProduct } from '../components';
 class Products extends Component {
 
 
-  getProductId = (id) => {
-    const { productStore: { getSingleProduct } } = this.props;
-    getSingleProduct(id)
-    .then(console.log);
-  }
+  // getProductId = (id) => {
+  //   const { productStore: { getSingleProduct } } = this.props;
+  //   getSingleProduct(id)
+  //   .then(console.log);
+  // }
 
   render() {
     const {

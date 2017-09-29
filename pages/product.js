@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'mobx-react';
 import { initProductStore } from '../store/product';
+import { SingleProduct } from '../components';
 
 class Product extends Component {
   static async getInitialProps(context) {
@@ -25,7 +26,7 @@ class Product extends Component {
   render() {
     return (
       <Provider productStore={this.store}>
-        <div>Single Product</div>
+        <SingleProduct />
       </Provider>
     );
   }
