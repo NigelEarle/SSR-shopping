@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import axios from 'axios';
+import fetch from 'isomorphic-unfetch';
 
 let store = null;
 
@@ -14,7 +14,8 @@ class ProductStore {
 
   @action fetchProducts = async () => {
     try {
-      const { data: { products } } = await axios.get('http://localhost:3000/api/products');
+      const data = await fetch('http://localhost:3000/api/products');
+      const { products } = await data.json();
       this.products = products;
     } catch(error) {
       this.error = error;
