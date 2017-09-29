@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { SingleProduct } from '../components';
+import { ListItemProduct } from '../components';
 
 @inject('productStore') @observer
 class Products extends Component {
@@ -23,7 +23,7 @@ class Products extends Component {
     return (
       <div>
         {products.map((product, idx) => (
-          <SingleProduct
+          <ListItemProduct
             {...product}
             key={product.id}
             getProductId={this.getProductId}
