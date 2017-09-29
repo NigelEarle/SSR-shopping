@@ -40,7 +40,7 @@ app.prepare()
     require('./server/passport')(); // passport strategy and serialization;
 
     server.get('/product/:id', (req, res) => {
-      const actualPage = '/post';
+      const actualPage = '/product';
       const { id } = req.params;
       app.render(req, res, actualPage, { id });
     });

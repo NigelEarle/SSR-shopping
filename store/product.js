@@ -5,10 +5,12 @@ let store = null;
 
 class ProductStore {
   @observable products;
+  @observable singleProduct;
   @observable error;
 
-  constructor(isServer, products, error) {
+  constructor(isServer, products, singleProduct, error) {
     this.products = products;
+    this.singleProduct = singleProduct
     this.error = error;
   };
 
@@ -22,20 +24,27 @@ class ProductStore {
     }
   };
 
-  fetchSingleProduct = (id) => {
+  @action fetchSingleProduct = async (id) => {
     if (!this.products) {
-      // use iso-fetch for req
+      try {
+        const data = await fetch(`http://localhost:3000/api/products/${id}`);
+        const product = await data.json()
+        this.singleProduct = product;
+      } catch (error) {
+        this.error = error;
+      }
+    } else {
+      this.singleProduct = await Promise.resolve(this.products.filter(product => id === product.id)[0]);
     }
-    // return Promise.resolve(this.products.filter(product => id === product.id)[0]);
   };
 }
 
-export function initProductStore (isServer, products = [], error = '') {
+export function initProductStore (isServer, products = [], singleProduct = {}, error = '') {
   if (isServer && typeof window === 'undefined') {
-    return new ProductStore(isServer, products, error);
+    return new ProductStore(isServer, products, singleProduct, error);
   } else {
     if (store === null) {
-      store = new ProductStore(isServer, products, error)
+      store = new ProductStore(isServer, products, singleProduct, error)
     }
     return store
   }

@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
+import { Provider } from 'mobx-react';
 import { initProductStore } from '../store/product';
 
 class Product extends Component {
-  // static async getInitialProps({ req }) {
-  //   const isServer = !!req;
-  //   const store = initProductStore(isServer);
-  //   await store.fetchSingleProduct();
-  //   return {
-  //     product: store.product,
-  //     error: store.error,
-  //     isServer,
-  //   }
-  // }
+  static async getInitialProps(context) {
+    const isServer = !!context.req;
+    const store = initProductStore(isServer);
+    await store.fetchSingleProduct(parseInt(context.query.id));
+    return {
+      singleProduct: store.singleProduct,
+      error: store.error,
+      isServer,
+    }
+  }
   constructor(props) {
     super(props);
-      // this.store = initProductStore(
-      //   props.isServer,
-      //   props.products, 
-      //   props.error
-      // );
+    this.store = initProductStore(
+      props.isServer,
+      props.singleProducts, 
+      props.error
+    );
   }
 
   render() {
-    
-
     return (
-      <div>Single Product</div>
+      <Provider productStore={this.store}>
+        <div>Single Product</div>
+      </Provider>
     );
   }
 };
