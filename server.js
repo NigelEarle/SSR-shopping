@@ -40,11 +40,9 @@ app.prepare()
     require('./server/passport')(); // passport strategy and serialization;
 
     server.get('/product/:id', (req, res) => {
-      console.log('product id route hit');
       const actualPage = '/post';
       const { id } = req.params;
-      const queryParams = { id };
-      app.render(req, res, actualPage, queryParams);
+      app.render(req, res, actualPage, { id });
     });
 
     server.get('*', (req, res) => {
@@ -54,7 +52,7 @@ app.prepare()
     server.listen(3000, (err) => {
       if (err) throw err;
       console.log('Listening on http://localhost:3000');
-    })
+    });
   })
   .catch((ex) => {
     console.error(ex.stack);
