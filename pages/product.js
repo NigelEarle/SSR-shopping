@@ -12,16 +12,17 @@ class Product extends Component {
   //     isServer,
   //   }
   // }
-
-  render() {
-    constructor(props) {
-      // super(props);
+  constructor(props) {
+    super(props);
       // this.store = initProductStore(
       //   props.isServer,
       //   props.products, 
       //   props.error
       // );
-    }
+  }
+
+  render() {
+    
 
     return (
       <div>Single Product</div>

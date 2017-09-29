@@ -21,7 +21,7 @@ class ProductStore {
     }
   };
 
-  @action fetchSingleProduct = (id) => {
+  fetchSingleProduct = (id) => {
     if (!this.products) {
       // use iso-fetch for req
     }
