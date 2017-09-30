@@ -25,10 +25,10 @@ class ProductStore {
   };
 
   @action fetchSingleProduct = async (id) => {
-    if (!this.products) {
+    if (!this.products.length) {
       try {
         const data = await fetch(`http://localhost:3000/api/products/${id}`);
-        const product = await data.json()
+        const { product } = await data.json();
         this.singleProduct = product;
       } catch (error) {
         this.error = error;

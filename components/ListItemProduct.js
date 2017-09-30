@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 const SingleProduct = ({
-  getProductId,
   id,
   title,
   description,
@@ -20,4 +19,4 @@ const SingleProduct = ({
   </div>
 );
 
-export default SingleProduct
+export default SingleProduct;

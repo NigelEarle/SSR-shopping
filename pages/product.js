@@ -9,6 +9,7 @@ class Product extends Component {
     const store = initProductStore(isServer);
     await store.fetchSingleProduct(parseInt(context.query.id));
     return {
+      products: store.products,
       singleProduct: store.singleProduct,
       error: store.error,
       isServer,
@@ -18,7 +19,8 @@ class Product extends Component {
     super(props);
     this.store = initProductStore(
       props.isServer,
-      props.singleProducts, 
+      props.products,
+      props.singleProduct, 
       props.error
     );
   }

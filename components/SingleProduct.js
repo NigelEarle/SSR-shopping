@@ -5,7 +5,6 @@ import { inject, observer } from 'mobx-react';
 class SingleProduct extends Component {
   constructor(props) {
     super(props);
-    
   }
 
   render() {
