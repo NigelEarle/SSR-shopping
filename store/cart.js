@@ -13,13 +13,20 @@ class CartStore {
 
   @action addProductToCart = async (id) => {
     const config = {
-
-    }
+      method: 'POST',
+      data: JSON.stringify({ id }),
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Accept': 'application/json',
+      }
+    };
 
     try {
-
+      const data = await fetch('http://localhost:3000/api/cart/new');
+      const { response } = await data.json();
+      console.log('RES', response)
     } catch (error) {
-      
+      this.error = error;
     }
   };
 
