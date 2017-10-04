@@ -8,9 +8,18 @@ class SingleProduct extends Component {
   }
 
   render() {
-    console.log(this.props)
+    const {
+      productStore: {
+        singleProduct,
+        products
+      }
+    } = this.props;
     return (
-      <div>Product</div>
+      <div>
+        <h1>{singleProduct.title}</h1>
+        <h3>{singleProduct.description}</h3>
+        <p>{singleProduct.inventory}</p>
+      </div>
     );
   }
 }
