@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
         <Head>
           <title>SSR Shopping</title>
           {this.props.styleTags}
+          <link rel="stylesheet" href="../static/_reset.css"/>
         </Head>
         <body>
           <Main />
