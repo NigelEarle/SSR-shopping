@@ -11,7 +11,7 @@ class SingleProduct extends Component {
     const {
       productStore: {
         singleProduct,
-        products
+        products,
       }
     } = this.props;
     
@@ -20,6 +20,7 @@ class SingleProduct extends Component {
         <h1>{singleProduct.title}</h1>
         <h3>{singleProduct.description}</h3>
         <p>{singleProduct.inventory}</p>
+        <button onClick={() => console.log('adding to cart')}>Add To Cart</button>
       </div>
     );
   }
