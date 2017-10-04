@@ -14,6 +14,7 @@ class SingleProduct extends Component {
         products
       }
     } = this.props;
+    
     return (
       <div>
         <h1>{singleProduct.title}</h1>
