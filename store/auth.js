@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import axios from 'axios';
+import fetch from 'isomorphic-unfetch';
 
 let store = null;
 
@@ -22,7 +22,6 @@ class AuthStore {
 
     const config = {
       method: method,
-      url: `/api/auth/${endpoint}`,
       data: JSON.stringify(payload),
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -31,8 +30,9 @@ class AuthStore {
     };
   
     try {
-      const { data } = await axios(config);
-      localStorage.setItem('email', data.email);
+      const data = await fetch(`http://localhost:3000/api/auth/${endpoint}`, config);
+      const { user } = await data.json()
+      localStorage.setItem('email', user.email);
       this.error = '';
     } catch(error) {
       this.error = 'Invalid login. Try again';
