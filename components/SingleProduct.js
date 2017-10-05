@@ -14,13 +14,12 @@ class SingleProduct extends Component {
         products,
       }
     } = this.props;
-    
     return (
       <div>
         <h1>{singleProduct.title}</h1>
         <h3>{singleProduct.description}</h3>
         <p>{singleProduct.inventory}</p>
-        <button onClick={() => console.log('adding to cart')}>Add To Cart</button>
+        <button onClick={() => console.log('add to cart')}>Add To Cart</button>
       </div>
     );
   }

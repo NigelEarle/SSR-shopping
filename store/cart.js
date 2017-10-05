@@ -11,10 +11,10 @@ class CartStore {
     this.error = error;
   }
 
-  @action addProductToCart = async (productId) => {
+  @action addProductToCart = async (product_id) => {
     const config = {
       method: 'POST',
-      data: JSON.stringify({ productId }),
+      data: JSON.stringify({ product_id }),
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         'Accept': 'application/json',

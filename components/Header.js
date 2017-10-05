@@ -5,10 +5,10 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Link as="/login" href="/login" prefetch>
+        <Link href="/login" prefetch>
           <a>Login</a>
         </Link>
-        <Link as="/register" href="/register" prefetch>
+        <Link href="/register" prefetch>
           <a>Register</a>
         </Link>
       </div>

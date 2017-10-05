@@ -1,23 +1,33 @@
 const express = require('express');
 const { Cart } = require('../../models');
-const { authMiddleware } = require('../utils/auth-middleware');
+const { isAuthenticated } = require('../../utils/auth-middleware');
 const router = express.Router();
 
-router.route('/') // fetch all products in cart from userid
+// router.route('/') // fetch all products in cart from userid
 
-router.post('/new', authMiddleware, (req, res) => {
+router.post('/new', isAuthenticated, (req, res) => {
   const { id } = req.user;
-  const { productId } = req.body
+  const { productId } = req.body;
+
   const payload = {
-    id,
-    productId,
-  }
+    user_id: id,
+    product_id: productId,
+  };
+
   Cart
   .forge(payload)
   .save()
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
+  .then(data => {
+    res
+    .status(200)
+    .json({ data });
+  })
+  .catch(error => {
+    res
+    .status(500)
+    .json({ error });
+  })
 
-})
+});
 
 module.exports = router;
