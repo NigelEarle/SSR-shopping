@@ -3,7 +3,11 @@ const { Cart } = require('../../models');
 const { isAuthenticated } = require('../../utils/auth-middleware');
 const router = express.Router();
 
-// router.route('/') // fetch all products in cart from userid
+router.get('/', isAuthenticated, (req, res) => {
+  const { id } = req.user;
+  // Query for all records with user id, return associate products
+})
+
 
 router.post('/new', isAuthenticated, (req, res) => {
   const { id } = req.user;
