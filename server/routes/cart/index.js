@@ -6,7 +6,20 @@ const router = express.Router();
 router.get('/', isAuthenticated, (req, res) => {
   const { id } = req.user;
   // Query for all records with user id, return associate products
-})
+  Cart
+  .where('user_id', id)
+  .fetch({
+    withRelated: ['products']
+  })
+  .then((data) => {
+    console.log(data);
+    res.send('hello')
+  })
+  .catch((err) => {
+    console.log(err);
+    res.send(err);
+  });
+});
 
 
 router.post('/new', isAuthenticated, (req, res) => {
