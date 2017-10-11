@@ -1,5 +1,5 @@
 const express = require('express');
-const { Cart } = require('../../models');
+const { Cart, User } = require('../../models');
 const { isAuthenticated } = require('../../utils/auth-middleware');
 const router = express.Router();
 
@@ -7,9 +7,9 @@ router.get('/', isAuthenticated, (req, res) => {
   const { id } = req.user;
   // Query for all records with user id, return associate products
   Cart
-  .where('user_id', id)
-  .fetch({
-    withRelated: ['products']
+  .where('id', id)
+  .fetchAll({
+    withRelated: ['products.id']
   })
   .then((data) => {
     console.log(data);

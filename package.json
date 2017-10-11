@@ -6,7 +6,7 @@
   "author": "nwre87 <nwre87@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build": "next build",
     "migrate": "cd server && knex migrate:latest --knexfile db.js && cd ..",
     "migrate:rollback": "cd server && knex migrate:rollback --knexfile db.js && cd ..",
