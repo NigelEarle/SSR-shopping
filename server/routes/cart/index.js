@@ -5,19 +5,21 @@ const router = express.Router();
 
 router.get('/', isAuthenticated, (req, res) => {
   const { id } = req.user;
-  // Query for all records with user id, return associate products
+
   Cart
   .where('user_id', id)
   .fetchAll({
     withRelated: ['product']
   })
   .then((data) => {
-    console.log(data.toJSON());
-    res.send('hello')
+    res
+    .status(200)
+    .json({ data });
   })
   .catch((err) => {
-    console.log(err);
-    res.send(err);
+    res
+    .status(500)
+    .json({ err });
   });
 });
 
