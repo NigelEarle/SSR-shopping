@@ -7,12 +7,12 @@ router.get('/', isAuthenticated, (req, res) => {
   const { id } = req.user;
   // Query for all records with user id, return associate products
   Cart
-  .where('id', id)
+  .where('user_id', id)
   .fetchAll({
-    withRelated: ['products.id']
+    withRelated: ['product']
   })
   .then((data) => {
-    console.log(data);
+    console.log(data.toJSON());
     res.send('hello')
   })
   .catch((err) => {
